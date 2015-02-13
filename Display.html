@@ -1,0 +1,100 @@
+<html>
+<head>
+	<title></title>
+
+	<script type="text/javascript" src="js/domain/City.js"></script>
+	<script type="text/javascript" src="js/domain/Tour.js"></script>
+	<script type="text/javascript" src="js/domain/Population.js"></script>
+	<script type="text/javascript" src="js/domain/Solver.js"></script>
+
+	<script type="text/javascript" src="js/UI/CanvasManager.js"></script>
+	<script type="text/javascript" src="js/UI/CitiesDrawner.js"></script>
+	<script type="text/javascript" src="js/UI/SolverDrawner.js"></script>
+
+	<script type="text/javascript" src="js/util/StopWatch.js"></script>
+	<script type="text/javascript" src="js/util/extensions.js"></script>
+
+</head>
+<body>
+
+	<script>
+
+	window.onload = function (){
+
+		var canvas = new CanvasManager(document.body, {w: 1000, h: 1000});
+
+		canvas.init()
+
+		var solver = new Solver(1000000, [
+					new City(785,514),
+					new City(224,380),
+					new City(281,312),
+					 
+					new City(493,413),
+					new City(571,431),
+					new City(321,845),
+					new City(329,521),
+					new City(437,857),
+					new City(54,357),
+					new City(443,742),
+					new City(854,109),
+					new City(634,727),
+					new City(335,233),
+					new City(737,855),
+					new City(193,800),
+					new City(700,788),
+					new City(107,952),
+					new City(157,784),
+					new City(476,367),
+					new City(739,742),
+					new City(946,657),
+					new City(297,900),
+					new City(705,668),
+					new City(239,514),
+					new City(894,923),
+					new City(138,506),
+					new City(361,195),
+					new City(792,345),
+					new City(544,452),
+					new City(904,454),
+					new City(397,915),
+					new City(361,230),
+					new City(66,462),
+					new City(729,354),
+					new City(294,224),
+					new City(502,585),
+					new City(427,217),
+					new City(157,221),
+					new City(311,118),
+					new City(295,403),
+					new City(294,326),
+					new City(327,527),
+					new City(760,457),
+					new City(904,953),
+					new City(245,139),
+					new City(849,525),
+					new City(908,66),
+					new City(564,791)
+
+				]);
+
+		function getCities(){
+
+			return solver.bestSolution.cities;
+		};
+
+		var drawner = new CitiesDrawner(getCities, canvas);
+		var drawner = new SolverDrawner(solver, canvas);
+		
+		
+		solver.complete();
+
+
+
+	};
+
+
+	</script>
+
+</body>
+</html>
